@@ -2,8 +2,7 @@ package org.example.servlet;
 
 
 import org.example.controller.PostController;
-import org.example.repository.PostRepository;
-import org.example.service.PostService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,8 @@ public class MainServlet extends HttpServlet {
 
   @Override
   public void init() {
-    final var repository = new PostRepository();
-    final var service = new PostService(repository);
-    controller = new PostController(service);
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("org.example");
+    controller = context.getBean(PostController.class);
     System.out.println("инициализировано");
   }
 
@@ -35,7 +33,6 @@ public class MainServlet extends HttpServlet {
       if (method.equals("GET") && path.matches("/api/posts/\\d+")) {
         // easy way
         String longId = path.substring(path.lastIndexOf("/") + 1);
-        System.out.println(longId);
         final var id = Long.parseLong(longId);
         controller.getById(id, resp);
         return;
