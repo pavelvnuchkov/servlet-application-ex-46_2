@@ -1,6 +1,7 @@
 package org.example.servlet;
 
 
+import org.example.config.JavaConfig;
 import org.example.controller.PostController;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -14,9 +15,9 @@ public class MainServlet extends HttpServlet {
 
   @Override
   public void init() {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("org.example");
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
     controller = context.getBean(PostController.class);
-    System.out.println("инициализировано");
+    System.out.println("Инициализировано");
   }
 
   @Override

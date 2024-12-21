@@ -9,7 +9,6 @@ import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 // Stub
-@Repository
 public class PostRepositoryImpl implements PostRepository{
   private List<Post> listPost = new CopyOnWriteArrayList<>();
   private long numberId;
