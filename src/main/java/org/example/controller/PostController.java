@@ -3,6 +3,7 @@ package org.example.controller;
 import com.google.gson.Gson;
 import org.example.model.Post;
 import org.example.service.PostService;
+import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
